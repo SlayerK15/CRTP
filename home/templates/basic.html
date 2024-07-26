@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Campus Recruitment Training Platform</title>
+        {% load static %}
+        <link rel="stylesheet" href='{% static 'style.css' %}'>
+        <link rel="stylesheet" href='{% static 'slider.css' %}'>
+        <link rel="stylesheet" href='{% static 'contact_style.css' %}'>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/lib/codemirror.css">
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/lib/codemirror.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/codemirror@5.57.0/mode/python/python.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/theme/dracula.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/theme/duotone-dark.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/theme/material-ocean.css">
+        {% block links %}
+        {% endblock %}
+    </head>
+<body>
+    <header class="p-3 text-bg-dark">
+        {% block nav %}
+        <nav>
+            <div class="logo">
+               {% block login_logo %} <img src="static/logo.png" alt=""> {% endblock %}
+            </div>
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="../contact">Contact</a></li>
+                <li><a href="#">About</a></li> 
+            </ul>
+            <form class="search" role="search">
+                <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search.." arial-label="search">     
+            </form>
+            <div class="container">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <div class=box>
+                        {% block login_button %}<button class='btn btn-outline-light me-2'><a href="{% url 'login_url' %}">Login</a></button>{% endblock %}
+                        <button class='btn btn-outline-warning'><a href="{% url 'register_url' %}">Register</a></button>
+                    </div>
+                    
+                {% endif %}
+            </div>
+        </nav>
+        {% endblock %}
+    </header>
+
+    {% block content %}{% endblock %}
+    {% block footer %}
+    <footer class="flex-all-center">
+        <p>Copyright &copy; crtp.com</p>
+    </footer>
+    {% endblock %}
+    <script src="static/slider.js"></script>
+
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> {% endcomment %}
+<script>
+    let theme = localStorage.getItem("theme") || "dracula";
+    let themeSelect = document.getElementById("theme-select");
+    themeSelect.value = theme;
+
+    let codeEditor = CodeMirror.fromTextArea(document.getElementById("code"), {
+      mode: 'python',
+      lineNumbers: true,
+      theme: theme
+    });
+    
+    themeSelect.addEventListener("change", function() {
+      let selectedTheme = this.value;
+      localStorage.setItem("theme", selectedTheme);
+      codeEditor.setOption("theme", selectedTheme);
+    });
+    let inputBox = document.getElementById("input-box");
+    let outputBox = document.getElementById("output-box");
+
+    inputBox.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        outputBox.value += inputBox.value + "\n";
+        inputBox.value = "";
+      }
+    });
+    
+    function switchTheme(theme) {
+      codeEditor.setOption("theme", theme);
+    }
+  </script>
+  <script src="static/1.js"></script>
+</body>
+</html>

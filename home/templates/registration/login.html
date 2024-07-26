@@ -1,0 +1,17 @@
+{% extends 'basic.html' %}
+{% block login_logo %} <img src="../static/logo.png" alt=""> {% endblock %}
+{% block login_button %}{% endblock %}
+{% block content %}
+    <div class="login-middlepart">
+        <div class="container2">
+            <h1>Login User</h1>
+            <div class="form">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button>Login</button>
+                </form>
+            </div>
+        </div>
+    </div>   
+{% endblock %}

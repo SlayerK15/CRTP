@@ -1,0 +1,219 @@
+{% extends 'basic.html' %}
+{% block links %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/lib/codemirror.css">
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/lib/codemirror.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.57.0/mode/python/python.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/theme/dracula.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/theme/duotone-dark.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/theme/material-ocean.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/lib/codemirror.css">
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/lib/codemirror.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.12/mode/python/python.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/mode/clike/clike.js"></script>  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/theme/dracula.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/theme/duotone-dark.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/theme/material-ocean.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/abcdef.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/cobalt.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/neat.min.css">
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/addon/hint/show-hint.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.58.2/addon/hint/show-hint.css">
+  <style>
+    .terminal-box {
+      background-color: #2e3038;
+      color: white;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 10px;
+      margin: 10px;
+      white-space: pre;
+      overflow-x: scroll;
+      width: 157%;
+      height: 164px;
+    }
+    .CodeMirror{
+      width: 100%;
+      height: 440px;
+    }
+    .compiler_container{
+      {% comment %} display : flex; {% endcomment %}
+      margin : 1%;
+      width:66%;
+      font-family: 'Roboto', sans-serif;
+    }
+    .compiler_container .code-area .form-group{
+      margin-top : 10px;
+    }
+    .output-block{
+      display: inline-block;
+      margin-left: 5px;
+    }
+    .code-area{
+      width : 100%;
+    }
+    .CodeMirror{
+      width : 100%;
+      height : 350px
+    }
+    .input{
+      margin-top: 44px;
+    }
+    .output{
+      margin-top: 10px;
+    }
+    .output-block{
+      display : inline-block;
+    }
+    .terminal textarea{
+      height: 166px;
+      width: 75%;
+    }
+    .compiler-form-group .form-control{
+      background: #2a71e4;
+      color: white;
+      width: 75px;
+      height: 25px;
+      border-radius: 5px;
+      margin-right: 25px;
+    }    
+    .compiler-form-group button{
+      margin-left: 25px;
+      background: #2a71e4;
+      color: white;
+      width: 65px;
+    } 
+    .cm-s-dracula.CodeMirror, .cm-s-dracula .CodeMirror-gutters {
+      background-color: #282a36 !important;
+      color: #f8f8f2 !important;
+      border: 1px solid white;
+  }
+  .logo img{
+    height: 30px;
+    width: 30px;
+  }
+  .text-bg-dark {
+    color: #fff!important;
+    /* background: linear-gradient(270deg, #153465 0%, #010529 100%); */
+    background: #2f4141;
+}
+
+  </style>
+  {% endblock %}
+  {% block nav %}
+    <nav class="sticky">
+        {% comment %} <h1>Welcome, {{user.username}}</h1> {% endcomment %}
+          <div class="logo">
+            <a href="#" onclick="goBack()"><img src="../static/back.png" alt=""></a>
+          </div>
+          <ul>
+            <li><a href="../dashboard">Home</a></li>
+        </ul>
+        <div class="dropdown">
+          <div class="select">
+              <span class="selected"><img src="../static/guest5.png" alt=""></span>
+              <div class="caret"></div>
+          </div>
+          <div class="dropdown-box">
+          <ul class="menu">
+            <li class="active"><h1>{{user.username}}</h1></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+      </nav>
+{% endblock %}
+  
+{% block content %}
+<div class="whole_container">
+  <div class="que_container">
+    <h1>Capgemini Frequent Questions Types</h1>
+  {% if question %}
+  <div class="que-button">
+    <button><a href="?question_id={{ question.id|add:-1 }}">Previous</a></button>
+    <button><a href="?question_id={{ question.id|add:1 }}">Next</a></button>
+  </div>
+    <div class="que-ans">
+      <h3>Question Text</h3>
+      <pre><p>{{ question.question_text }}</p></pre>
+      <h3>Input Text</h3>
+      <pre><p>{{ question.input_format }}</p></pre>
+      <h3>Output Format</h3>
+      <pre><p>{{ question.output_format }}</p></pre>
+      <div class="dropdown">
+        <div class="select">
+            <span class="selected">Correct Answer</span>
+            <div class="caret"></div>
+        </div>
+        <div class="dropdown-box">
+        <ul class="menu">
+          <li><pre><p class="cor-ans">{{ question.correct_ans }}</p></pre></li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  {% else %}
+    <p>No questions found.</p>
+  {% endif %}
+  </div>
+  <div class="compiler_container">
+    <div class="code-area">
+      <form method="POST" >
+                
+        <div class="form-group">
+            
+        </div><br>
+        <div class="compiler-form-group">
+            Language:
+            <label for="selected-language"></label>
+            <select class="form-control" id="selected-language" name="selected-language">
+                <option value="python" {% if selected_language == 'python' %}selected{% endif %}>Python</option>
+                <option value="java" {% if selected_language == 'java' %}selected{% endif %}>Java</option>
+                <option value="cpp" {% if selected_language == 'cpp' %}selected{% endif %}>C++</option>
+                <option value="c" {% if selected_language == 'c' %}selected{% endif %}>C</option>
+            </select>
+            Theme:
+            <select id="theme-select">
+              <option value="dracula">Dracula</option>
+              <option value="duotone-dark">Duotone Dark</option>
+              <option value="material-ocean">Material Ocean</option>
+              <option value="abcdef">abcdef</option>
+              <option value="cobalt">Cobalt</option>
+              <option value="neat">Light</option>
+            </select>      
+            <button type="submit" class="btn btn-primary">Run</button>   
+        </div>
+        
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="code">Enter your code:</label>
+            <textarea class="form-control" id="code" name="code" rows="15">{{ code }}</textarea>
+        </div>
+    </div>
+          <div class="output-block">
+            <div class="form-group">
+              <div class="input">
+                  Input:<br>
+                  <textarea class="terminal-box" id="input-box" rows="10" cols="50" name="input">{{ input_data }}</textarea><br><br>
+                </div>
+          </div>
+            </form>
+            <div class="output">
+                Output:<br>
+              <div class="terminal-box">  
+                  <pre class="output">{{ output }}</pre>
+              </div>
+          </div>
+              </div>
+  </div>
+</div>
+<script src="../static/1.js"></script>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+{% endblock %}
+
+{% block footer %}
+    
+{% endblock %}

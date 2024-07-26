@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.contact_container_main{
+    /* color: white; */
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    background: rgba(0, 0, 0, 0.7) url('../static/back_img.png');
+    background-size: cover;
+    background-blend-mode: darken;
+}
+.contact_container{
+    display: table-caption;
+    margin-top: 20px;
+    margin-left: 20px;
+    height: 88vh;
+}
+.contact_container h1{
+    color: white;
+}
+.contact_container form{
+    margin-top: 10%;
+}
+.contact_container form .form-group{
+    margin-top: 10%;
+}
+.contact_container form .form-group input{
+    border: 2px solid transparent;
+    background: lavender;
+    border-radius: 15px;
+    height: 6vh;
+    margin-top: 5px;
+    width: 250px;
+    padding-inline: 5px;
+}
+.contact_container form .form-group textarea{
+    background: lavender;
+    width: 290px;
+    height: 13vh;
+    margin-top: 5px;
+    border: 0px solid;
+    border-radius: 8px;
+    padding-inline: 7px;
+    padding-top: 5px;
+}
+.form-group label{
+    color: white;
+}
+.contact-btn{
+    text-decoration: none;
+    background: #0995ce;
+    border: 0px solid lightgoldenrodyellow;
+    height: 31px;
+    width: 81px;
+    color: wheat;
+    border-radius: 7px;
+    margin-top: 8px;
+}

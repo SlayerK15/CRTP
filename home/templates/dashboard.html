@@ -1,0 +1,231 @@
+{% extends 'basic.html' %}
+{% block nav %}
+      <nav class="sticky">
+        {% comment %} <h1>Welcome, {{user.username}}</h1> {% endcomment %}
+          <div class="logo">
+              <img src="static/logo.png" alt="">
+          </div>
+          <div class="dropdown">
+            <div class="select">
+                <span class="selected"><img src="../static/guest5.png" alt=""></span>
+                <div class="caret"></div>
+            </div>
+            <div class="dropdown-box">
+            <ul class="menu">
+              <li class="active"><h1>{{user.username}}</h1></li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="index-middlepart homeheight">
+            {% comment %} Code for slider {% endcomment %}
+
+        <div class="cod-apti-container">
+            <div class="cod-container">
+                <img src="static/coding.jpg" class="product-thumb" alt="">
+            </div>
+            <div class="apti-container">
+                <img src="static/apptitude.jpg" class="product-thumb" alt="">
+            </div>
+        </div>
+
+        <div class="product-outer-container">
+          
+    <section class="product">
+        <h2 class="product-category">
+          Companies
+        </h2>
+        <div class="button-center">
+        <div class="button-left"><button class="pre-btn"><img src="static/angle-right.png" height=25px width=25px alt=""></button></div>
+            <div class="product-container">
+                <div class="product-card">
+                    <div class="product-image">
+                        {% comment %} <span class="discount-tag">50% off</span> {% endcomment %}
+                        <a href="/cognizant"><img src="static/cognizant.png" class="product-thumb" alt=""></a>
+                        {% comment %} <button class="card-btn">add to wishlist</button> {% endcomment %}
+                    </div>
+                    {% comment %} <div class="product-info">
+                        <h2 class="product-brand">brand</h2>
+                        <p class="product-short-description">a short line about the product</p>
+                        <span class="price">$20</span><span class="actual-price">$40</span>
+                    </div> {% endcomment %}
+                </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                {% comment %} <span class="discount-tag">50% off</span> {% endcomment %}
+                <a href="/amazon"><img src="static/amazon.png" class="product-thumb" alt=""></a>
+                {% comment %} <button class="card-btn">add to wishlist</button> {% endcomment %}
+            </div>
+            {% comment %} <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">a short line about the product</p>
+                <span class="price">$20</span><span class="actual-price">$40</span>
+            </div> {% endcomment %}
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                {% comment %} <span class="discount-tag">50% off</span> {% endcomment %}
+                <a href="/capgemini"><img src="static/capgemini.png" class="product-thumb" alt=""></a>
+                {% comment %} <button class="card-btn">add to wishlist</button> {% endcomment %}
+            </div>
+            {% comment %} <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">a short line about the product</p>
+                <span class="price">$20</span><span class="actual-price">$40</span>
+            </div> {% endcomment %}
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                {% comment %} <span class="discount-tag">50% off</span> {% endcomment %}
+                <a href="/ibm"><img src="static/IBM.png" class="product-thumb" alt=""></a>
+                {% comment %} <button class="card-btn">add to wishlist</button> {% endcomment %}
+            </div>
+            {% comment %} <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">a short line about the product</p>
+                <span class="price">$20</span><span class="actual-price">$40</span>
+            </div> {% endcomment %}
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                {% comment %} <span class="discount-tag">50% off</span> {% endcomment %}
+                <a href="/accenture"><img src="static/accenture.png" class="product-thumb" alt=""></a>
+                {% comment %} <button class="card-btn">add to wishlist</button> {% endcomment %}
+            </div>
+            {% comment %} <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">a short line about the product</p>
+                <span class="price">$20</span><span class="actual-price">$40</span>
+            </div> {% endcomment %}
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                {% comment %} <span class="discount-tag">50% off</span> {% endcomment %}
+                <a href="/microsoft"><img src="static/microsoft.png" class="product-thumb" alt=""></a>
+                {% comment %} <button class="card-btn">add to wishlist</button> {% endcomment %}
+            </div>
+            {% comment %} <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">a short line about the product</p>
+                <span class="price">$20</span><span class="actual-price">$40</span>
+            </div> {% endcomment %}
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                {% comment %} <span class="discount-tag">50% off</span> {% endcomment %}
+                <a href="/atos"><img src="static/atos.png" class="product-thumb" alt=""></a>
+                {% comment %} <button class="card-btn">add to wishlist</button> {% endcomment %}
+            </div>
+            {% comment %} <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">a short line about the product</p>
+                <span class="price">$20</span><span class="actual-price">$40</span>
+            </div> {% endcomment %}
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">
+                {% comment %} <span class="discount-tag">50% off</span> {% endcomment %}
+                <a href="/delloite"><img src="static/deloitte.png" class="product-thumb" alt=""></a>
+                {% comment %} <button class="card-btn">add to wishlist</button> {% endcomment %}
+            </div>
+            {% comment %} <div class="product-info">
+                <h2 class="product-brand">brand</h2>
+                <p class="product-short-description">a short line about the product</p>
+                <span class="price">$20</span><span class="actual-price">$40</span>
+            </div> {% endcomment %}
+        </div>
+    </div>
+    <div class:"button-right"><button class="nxt-btn"><img src="static/angle-right.png" height=25px width=25px alt=""></button></div>
+</div>
+</section>
+
+<section class="product">
+    <h2 class="product-category">
+      Tracks
+    </h2>
+    <div class="button-center">
+    <div class="button-left"><button class="pre-btn"><img src="static/angle-right.png" height=25px width=25px alt=""></button></div>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image-track1">
+                    {% comment %} <span class="discount-tag">50% off</span> {% endcomment %}
+                    <a href="faang"><img src="static/track1.jpg" class="product-thumb-track1" alt=""></a>
+                    {% comment %} <button class="card-btn">add to wishlist</button> {% endcomment %}
+                </div>
+                {% comment %} <div class="product-info">
+                    <h2 class="product-brand">brand</h2>
+                    <p class="product-short-description">a short line about the product</p>
+                    <span class="price">$20</span><span class="actual-price">$40</span>
+                </div> {% endcomment %}
+            </div>
+
+    <div class="product-card">
+        <div class="product-image">
+            {% comment %} <span class="discount-tag">50% off</span> {% endcomment %}
+            <a href="service_based"><img src="static/track2.jpg" class="product-thumb" alt=""></a>
+            {% comment %} <button class="card-btn">add to wishlist</button> {% endcomment %}
+        </div>
+        {% comment %} <div class="product-info">
+            <h2 class="product-brand">brand</h2>
+            <p class="product-short-description">a short line about the product</p>
+            <span class="price">$20</span><span class="actual-price">$40</span>
+        </div> {% endcomment %}
+    </div>
+
+    <div class="product-card">
+        <div class="product-image">
+            {% comment %} <span class="discount-tag">50% off</span> {% endcomment %}
+            <a href="product_based"><img src="static/track3.jpg" class="product-thumb" alt=""></a>
+            {% comment %} <button class="card-btn">add to wishlist</button> {% endcomment %}
+        </div>
+        {% comment %} <div class="product-info">
+            <h2 class="product-brand">brand</h2>
+            <p class="product-short-description">a short line about the product</p>
+            <span class="price">$20</span><span class="actual-price">$40</span>
+        </div> {% endcomment %}
+    </div>
+
+    <div class="product-card">
+        <div class="product-image">
+            {% comment %} <span class="discount-tag">50% off</span> {% endcomment %}
+            <a href="bigcom"><img src="static/track4.jpg" class="product-thumb" alt=""></a>
+            {% comment %} <button class="card-btn">add to wishlist</button> {% endcomment %}
+        </div>
+        {% comment %} <div class="product-info">
+            <h2 class="product-brand">brand</h2>
+            <p class="product-short-description">a short line about the product</p>
+            <span class="price">$20</span><span class="actual-price">$40</span>
+        </div> {% endcomment %}
+    </div>
+
+    
+</div>
+<div class:"button-right"><button class="nxt-btn"><img src="static/angle-right.png" height=25px width=25px alt=""></button></div>
+</div>
+</section>
+</div>
+        </div>
+        {% comment %} {% if messages %}
+{% for message in messages %}
+      <div class="alert alert-warning {{ message.tags }} alert-dismissible fade show my=0" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+{% endfor %}
+{% endif %} {% endcomment %}
+
+{% endblock %}
+              

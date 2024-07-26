@@ -1,0 +1,43 @@
+{% extends 'basic.html' %}
+    {% block content %}
+        {% comment %} <div class="container-fluid px-0 mb-3">
+            <img src="https://source.unsplash.com/1200x400/?phone,contact" class="d-block w-100" alt="...">
+        </div> {% endcomment %}
+        <div class="contact_container_main">
+              <div class="contact_container">
+                  <h1 class=text-center>Contact Us</h1>
+                  <form method="post" action="/contact">
+                    {% csrf_token %}
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+                      </div>
+              
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email">
+                      </div>
+              
+                      <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="phone" class="form-control" id="phone" name="phone" placeholder="Enter your Phone Number">
+                      </div>
+              
+                      <div class="form-group">
+                        <label for="desc">Tell me about for what you want to contact me</label>
+                        <textarea class="form-control" id="desc" row="3" name="desc"></textarea>
+                      </div>
+                      
+                      <button type="submit" class="contact-btn">Submit</button>
+                    </form>
+                  </div>
+                </div>
+                {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning {{ message.tags }} alert-dismissible fade show my=0" role="alert">
+                <strong>{{ message }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+            {% endblock %}

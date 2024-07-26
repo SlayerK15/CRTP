@@ -1,0 +1,53 @@
+{% extends 'basic.html' %}
+{% block nav %}
+      <nav class="sticky">
+        {% comment %} <h1>Welcome, {{user.username}}</h1> {% endcomment %}
+          <div class="logo">
+              <img src="static/logo.png" alt="">
+          </div>
+          <ul>
+            <li><a href="dashboard">Home</a></li>
+        </ul>
+          <div class="dropdown">
+            <div class="select">
+                <span class="selected"><img src="static/guest5.png" alt=""></span>
+                <div class="caret"></div>
+            </div>
+            <div class="dropdown-box">
+            <ul class="menu">
+              <li class="active"><h1>{{user.username}}</h1></li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="dash-container">
+      <div class="dash-contain-in">
+        <a href="adobe"><img src="static/google.png" class="product-thumb" alt=""></a>
+      </div>
+      <div class="dash-contain-in">
+        <a href="adobe"><img src="static/amazon.png" class="product-thumb" alt=""></a>
+      </div>
+      <div class="dash-contain-in">
+        <a href="adobe"><img src="static/mcafee.png" class="product-thumb" alt=""></a>
+      </div>
+      <div class="dash-contain-in">
+        <a href="adobe"><img src="static/arm.png" class="product-thumb" alt=""></a>
+      </div>
+      <div class="dash-contain-in">
+        <a href="adobe"><img src="static/cisco.png" class="product-thumb" alt=""></a>
+      </div>
+      <div class="dash-contain-in">
+        <a href="adobe"><img src="static/intel.png" class="product-thumb" alt=""></a>
+      </div>
+      <div class="dash-contain-in">
+        <a href="adobe"><img src="static/flipcart.png" class="product-thumb" alt=""></a>
+      </div>
+      <div class="dash-contain-in">
+        <a href="adobe"><img src="static/adobe.png" class="product-thumb" alt=""></a>
+      </div>
+    </div>
+{% endblock %}
